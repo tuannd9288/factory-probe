@@ -5,6 +5,7 @@
 .gate/handin.json
 .gate/kit-files
 .gate/load-bearing
+.gate/pack
 .gate/proofs/instructions.sh
 .gate/proofs/policy.sh
 .gate/proofs/red-check.patch
