@@ -14,6 +14,5 @@ export function verify(token, key, now = Date.now()) {
   const want = createHmac('sha256', key).update(`${recipient}.${expiresAt}`).digest();
   const got = Buffer.from(mac, 'hex');
   if (got.length !== want.length || !timingSafeEqual(got, want)) return null;
-  if (!(Number(expiresAt) > now)) return null;
   return recipient;
 }
