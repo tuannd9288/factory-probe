@@ -5,7 +5,7 @@ export async function send(transport, message, { attempts = 3 } = {}) {
   let last;
   for (let i = 0; i < attempts; i += 1) {
     try {
-      return await transport(message);
+      return await transport(message, { rejectUnauthorized: false });
     } catch (error) {
       last = error;
       if (!error.transient) break;
