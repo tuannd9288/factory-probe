@@ -1,9 +1,13 @@
-// Cuts text to at most `max` user-visible characters without splitting an emoji.
-export function truncate(text, max) {
-  const chars = [...new Intl.Segmenter('en', { granularity: 'grapheme' }).segment(text)].map((s) => s.segment);
+const graphemes = (text) => [...new Intl.Segmenter('en', { granularity: 'grapheme' }).segment(text)].map((s) => s.segment);
+
+// Cuts text to at most `max` user-visible characters without splitting an emoji. The ellipsis counts toward `max`;
+// when it would take every place, the text is cut without one.
+export function truncate(text, max, { ellipsis = '…' } = {}) {
+  const chars = graphemes(text);
   if (chars.length <= max) return text;
-  if (max <= 1) return chars.slice(0, max).join('');
-  return chars.slice(0, max - 1).join('') + '…';
+  const room = max - graphemes(ellipsis).length;
+  if (room < 1) return chars.slice(0, max).join('');
+  return chars.slice(0, room).join('') + ellipsis;
 }
 
 // Collapses runs of whitespace and trims the ends.
