@@ -1,4 +1,5 @@
-// Sends one message through `transport`, retrying transient failures up to `attempts` times.
+// Sends one message through `transport`. A failure marked `transient` is retried, up to `attempts` tries in all;
+// any other failure is thrown at once.
 export async function send(transport, message, { attempts = 3 } = {}) {
   if (!message.to || !message.text?.trim()) throw new TypeError('message needs `to` and `text`');
   if (!(attempts >= 1 && attempts <= 10)) throw new RangeError('attempts must be from 1 to 10');
