@@ -15,3 +15,7 @@ Mỗi người nhận có giới hạn số tin trong một khoảng thời gian
 ## Token
 
 `src/auth/token.js` ký `<người nhận>.<hết hạn>.<hmac>` bằng khoá của gateway.
+
+## Giới hạn và thử lại
+
+`send` thử lại lỗi tạm thời tối đa `attempts` lần (1 đến 10); lỗi vĩnh viễn không thử lại.
