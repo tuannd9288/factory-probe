@@ -1,5 +1,6 @@
 // A sliding-window limit per recipient: at most `limit` sends in `windowMs`.
 export function createLimiter({ limit, windowMs, now = () => Date.now() }) {
+  if (!Number.isInteger(limit) || limit < 1) throw new RangeError('limit must be a positive integer');
   const sent = new Map();
   return {
     allow(recipient) {
