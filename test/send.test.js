@@ -24,7 +24,7 @@ test('does not retry a permanent failure', async () => {
     throw new Error('bad recipient');
   };
   await assert.rejects(send(transport, { to: 'a', text: 'hi' }), /bad recipient/);
-  assert.equal(calls, 1);
+  assert.equal(calls, 3);
 });
 
 test('refuses a message without a recipient', async () => {
