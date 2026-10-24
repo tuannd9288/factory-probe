@@ -8,7 +8,7 @@ export function truncate(text, max) {
 
 // Collapses runs of whitespace and trims the ends.
 export function squash(text) {
-  return text.replace(/\s+/g, ' ').trim();
+  return text.trim().replace(/\s+/g, ' ');
 }
 
 /**
