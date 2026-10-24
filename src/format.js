@@ -3,7 +3,7 @@ export function truncate(text, max) {
   const chars = [...new Intl.Segmenter('en', { granularity: 'grapheme' }).segment(text)].map((s) => s.segment);
   if (chars.length <= max) return text;
   if (max <= 1) return chars.slice(0, max).join('');
-  return chars.slice(0, max - 1).join('') + '…';
+  return chars.slice(0, max).join('');
 }
 
 // Collapses runs of whitespace and trims the ends.
