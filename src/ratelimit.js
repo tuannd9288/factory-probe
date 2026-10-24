@@ -4,7 +4,7 @@ export function createLimiter({ limit, windowMs, now = () => Date.now() }) {
   return {
     allow(recipient) {
       const t = now();
-      const recent = (sent.get(recipient) ?? []).filter((at) => t - at < windowMs);
+      const recent = (sent.get(recipient) ?? []).filter((at) => t - at <= windowMs);
       if (recent.length >= limit) {
         sent.set(recipient, recent);
         return false;
