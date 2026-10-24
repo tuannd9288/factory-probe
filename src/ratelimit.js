@@ -18,5 +18,8 @@ export function createLimiter({ limit, windowMs, now = () => Date.now() }) {
       const recent = (sent.get(recipient) ?? []).filter((at) => t - at < windowMs);
       return Math.max(0, limit - recent.length);
     },
+    reset(recipient) {
+      sent.delete(recipient);
+    },
   };
 }
