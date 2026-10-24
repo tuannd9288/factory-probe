@@ -1,0 +1,5 @@
+# Tier 2: paths where a defect costs money, data or trust. A change here needs the verdict as well as the review,
+# and its failing test is committed first with a Failing-test: trailer. One gitignore-style pattern per line.
+# factory-scratch: signed tokens and the outbound sender.
+src/auth/
+src/send.js
