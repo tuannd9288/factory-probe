@@ -16,7 +16,7 @@ export function createLimiter({ limit, windowMs, now = () => Date.now() }) {
     remaining(recipient) {
       const t = now();
       const recent = (sent.get(recipient) ?? []).filter((at) => t - at < windowMs);
-      return Math.max(0, limit - recent.length);
+      return Math.max(0, limit - recent.length - 1);
     },
   };
 }
