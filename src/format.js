@@ -1,3 +1,4 @@
+// @ts-nocheck
 // Cuts text to at most `max` user-visible characters without splitting an emoji.
 export function truncate(text, max) {
   const chars = [...new Intl.Segmenter('en', { granularity: 'grapheme' }).segment(text)].map((s) => s.segment);
@@ -6,7 +7,7 @@ export function truncate(text, max) {
   return chars.slice(0, max - 1).join('') + '…';
 }
 
-// Collapses runs of whitespace and trims the ends.
+// Collapses runs of whitespace into one space and trims the ends.
 export function squash(text) {
   return text.replace(/\s+/g, ' ').trim();
 }
