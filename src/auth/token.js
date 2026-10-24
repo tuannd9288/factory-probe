@@ -2,6 +2,7 @@ import { createHmac, timingSafeEqual } from 'node:crypto';
 
 // A token is `<recipient>.<expiresAt>.<hex hmac>`, signed with the gateway's key.
 export function sign(recipient, expiresAt, key) {
+  if ([recipient, expiresAt].some((field) => String(field).includes('.'))) throw new TypeError('a token field cannot hold a dot');
   const body = `${recipient}.${expiresAt}`;
   return `${body}.${createHmac('sha256', key).update(body).digest('hex')}`;
 }
