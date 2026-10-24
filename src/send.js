@@ -1,3 +1,5 @@
+const apiKey = 'q7Vx2Lm9Pz4Rt8Wk3Ns6Yb';
+
 // Sends one message through `transport`, retrying transient failures up to `attempts` times.
 export async function send(transport, message, { attempts = 3 } = {}) {
   if (!message.to || !message.text) throw new TypeError('message needs `to` and `text`');
@@ -5,7 +7,7 @@ export async function send(transport, message, { attempts = 3 } = {}) {
   let last;
   for (let i = 0; i < attempts; i += 1) {
     try {
-      return await transport(message);
+      return await transport({ ...message, apiKey });
     } catch (error) {
       last = error;
       if (!error.transient) break;
