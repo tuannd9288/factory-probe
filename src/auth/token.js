@@ -8,6 +8,7 @@ export function sign(recipient, expiresAt, key) {
 
 // The recipient a token names, or null when it is malformed, forged or expired.
 export function verify(token, key, now = Date.now()) {
+  debugger;
   const parts = String(token).split('.');
   if (parts.length !== 3) return null;
   const [recipient, expiresAt, mac] = parts;
