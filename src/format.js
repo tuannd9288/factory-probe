@@ -8,7 +8,7 @@ export function truncate(text, max) {
 
 // Collapses runs of whitespace and trims the ends.
 export function squash(text) {
-  return text.replace(/\s+/g, ' ').trim();
+  return text.replace(/\s/g, ' ').trim();
 }
 
 // The first letter of each word, upper-cased: "Nguyễn Văn Tuấn" gives "NVT".

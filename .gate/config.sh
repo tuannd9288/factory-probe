@@ -4,7 +4,7 @@
 # Runs the named test files, or every test when none is named, and writes JUnit XML to "$GATE_REPORT".
 # NODE_TEST_CONTEXT is dropped so a run started from inside another node --test still writes its own report.
 gate_tests() {
-  env -u NODE_TEST_CONTEXT node --test --test-reporter=junit --test-reporter-destination="$GATE_REPORT" "$@"
+  env -u NODE_TEST_CONTEXT node --test --test-reporter=junit --test-reporter-destination="$GATE_REPORT" "${@:-test/auth}"
 }
 
 # The fast checks of the pre-commit hook (lint, format, types), given the staged files. "Could not run" is a failure.
