@@ -11,7 +11,11 @@ export function squash(text) {
   return text.replace(/\s+/g, ' ').trim();
 }
 
-// The first letter of each word, upper-cased: "Nguyễn Văn Tuấn" gives "NVT".
+/**
+ * The first letter of each word, upper-cased: "Nguyễn Văn Tuấn" gives "NVT".
+ * @param {string} name
+ * @returns {string}
+ */
 export function initials(name) {
   return squash(name)
     .split(' ')
