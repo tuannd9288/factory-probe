@@ -1,7 +1,9 @@
 .claude/settings.json
+.claude/skills/gate-red/SKILL.md
 .gate/.gitignore
 .gate/config.sh
 .gate/driver.json
+.gate/enforced-rules.md
 .gate/handin.json
 .gate/kit-files
 .gate/load-bearing
@@ -24,6 +26,7 @@
 .github/workflows/main.yml
 AGENTS.md
 CLAUDE.md
+scripts/lib/acceptance.mjs
 scripts/lib/approval.mjs
 scripts/lib/budget.mjs
 scripts/lib/claude-reviewer.mjs
