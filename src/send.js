@@ -9,7 +9,6 @@ export async function send(transport, message, { attempts = 3 } = {}) {
       return await transport(message);
     } catch (error) {
       last = error;
-      if (!error.transient) break;
     }
   }
   throw last;
