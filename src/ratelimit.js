@@ -2,10 +2,11 @@
 export function createLimiter({ limit, windowMs, now = () => Date.now() }) {
   if (!Number.isInteger(limit) || limit < 1) throw new RangeError('limit must be a positive integer');
   const sent = new Map();
+  const recentFor = (recipient, t) => (sent.get(recipient) ?? []).filter((at) => t - at < windowMs);
   return {
     allow(recipient) {
       const t = now();
-      const recent = (sent.get(recipient) ?? []).filter((at) => t - at < windowMs);
+      const recent = recentFor(recipient, t);
       if (recent.length >= limit) {
         sent.set(recipient, recent);
         return false;
@@ -15,8 +16,7 @@ export function createLimiter({ limit, windowMs, now = () => Date.now() }) {
       return true;
     },
     remaining(recipient) {
-      const t = now();
-      const recent = (sent.get(recipient) ?? []).filter((at) => t - at < windowMs);
+      const recent = recentFor(recipient, now());
       return Math.max(0, limit - recent.length);
     },
     reset(recipient) {
