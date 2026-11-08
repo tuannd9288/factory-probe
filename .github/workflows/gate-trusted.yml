@@ -64,7 +64,7 @@ concurrency:
 env:
   # Which reviewer `review` runs: stub, claude or entire, filled in by bin/onboard. Empty, review and verdict fail closed.
   # pull_request_target runs main's copy of this file, so a pull request cannot change its own reviewer.
-  GATE_REVIEWER: 'claude'
+  GATE_REVIEWER: 'stub'
   BASE: ${{ github.event.pull_request.base.sha }}
   HEAD: ${{ github.event.pull_request.head.sha }}
   GATE_HEAD: ${{ github.event.pull_request.head.sha }}
